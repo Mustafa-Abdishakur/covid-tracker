@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COVID-19 tracker</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
+    <!-- Particles background
+    <div id="particles-js"></div>-->
     <main>
         <header>
             <h1>COVID-19 Tracker</h1>
@@ -269,24 +272,24 @@
             <div class="label-2">
                 <label for="history">Search history</label>
                 <select name="history" id="search-histor">
-                    <option></option>
+                    <option disabled selected value> -- select an option -- </option>
                 </select>
             </div>
         </div>
         <div class="container-2">
             <div class="left-container">
-                <h3>COUNTRY</h3>
+                <h2>Republic of south africa</h2>
                 <div class="data-container cases">
                     <p>Cases</p>
-                    <span>NUMBER</span>
+                    <span>0</span>
                 </div>
                 <div class="data-container recoveries">
                     <p>Recoveries</p>
-                    <span>NUMBER</span>
+                    <span>0</span>
                 </div>
                 <div class="data-container deaths">
                     <p>Deaths</p>
-                    <span>NUMBER</span>
+                    <span>0</span>
                 </div>
             </div>
             <div class="middle-container">
@@ -547,6 +550,10 @@
         </div>
        
     </main>
-<script src="index.js"></script>
+
+    <!--particles js fil-->
+    <script src="js/particles.min.js"></script>
+    <script src="js/app.js"></script>
+<script src="js/chart.js"></script>
 </body>
 </html>
