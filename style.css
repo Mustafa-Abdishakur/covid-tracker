@@ -18,7 +18,7 @@ header{
     flex-direction: column;
     align-items: center;
     margin:-10px;
-    
+    text-align: center;
 }
 
 .info-container{
@@ -30,6 +30,7 @@ header{
     margin-top:10px;
     width:65%;
     height:65vh;
+    position: relative;
     
 }
 canvas{
@@ -70,6 +71,7 @@ select{
     display:flex;
     flex-direction: column;
     text-align: center;
+    z-index:2;
 }
 .chart-type-container label{
     font-weight: bold;
@@ -79,4 +81,8 @@ select{
     width:75px;
     margin:5px;
 }
-
+@media (max-width:550px){
+    .chart-type-container{
+        right:5%;
+    }
+}
