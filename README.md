@@ -1,4 +1,4 @@
-#Covid-19 tracker
+# Covid-19 tracker
 - Application that display the latest Covid-19 data for a country.
 - It uses an API to fetch the latest data and displays it using chartjs library. 
 - Features: 
