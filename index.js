@@ -9,6 +9,9 @@ const DOM = {
 let covid;
 let addCountry;
 
+/*Notes: 
+1)the covid data is from https://documenter.getpostman.com/view/10808728/SzS8rjbc
+2) the current data from March 2020 to Dec 2020 and to display more monthly data change the end date in the URL in getMonthlyInfo() and add more labes and data in displayData() */
 class Covid {
     constructor(country) {
         this.country = country;
@@ -136,8 +139,8 @@ class Covid {
     }
     async getMonthlyInfo() {
         try {
-            //Note: to display more monthly data change from july to another month (August, Sep , etc) 
-            const url = await fetch(`https://api.covid19api.com/country/${this.country}/status/confirmed?from=2020-02-01T00:00:00Z&to=2020-07-01T00:00:00Z`);
+         
+            const url = await fetch(`https://api.covid19api.com/country/${this.country}/status/confirmed?from=2020-02-01T00:00:00Z&to=2020-12-01T00:00:00Z`);
             let data = await url.json();
             //FILTER AND ADD DATA TO GET MONTHS NOT DAYS
             let total = 0;
@@ -209,10 +212,10 @@ class Covid {
 
             // The data for our dataset
             data: {
-                labels: ['March', 'April', 'May', 'June', 'July'],
+                labels: ['March', 'April', 'May', 'June', 'July', 'September', 'October', 'November', 'December'],
                 datasets: [{
                     label: `${this.country} cases`,
-                    data: [this.monthlyData[0], this.monthlyData[1], this.monthlyData[2], this.monthlyData[3], this.monthlyData[4]]
+                    data: [this.monthlyData[0], this.monthlyData[1], this.monthlyData[2], this.monthlyData[3], this.monthlyData[4],this.monthlyData[5],this.monthlyData[6],this.monthlyData[7],this.monthlyData[8]]
                 }]
             },
 
