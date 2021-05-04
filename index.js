@@ -38,8 +38,11 @@ class Covid {
                     this.recoveries = 0;
                     this.deaths = 0;
                     alert(`oops. Can\'t display data for this option`);
+                    return;
                 }
             }
+            document.querySelector('.container-2').scrollIntoView();
+
 
         } catch (err) {
             alert(err);
@@ -94,41 +97,41 @@ class Covid {
     }
     chartChange(type) {
         myChart.destroy();
-            myChart = new Chart(ctx, {
-                // The type of chart we want to create
-                type: type,
+        myChart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: type,
 
-                // The data for our dataset
-                data: {
-                    labels: ['cases', 'recoveries', 'deaths'],
-                    datasets: [{
-                        label: this.country,
-                        backgroundColor: [
-                            '#0e75b9',
-                            'rgb(13, 165, 59)',
-                            'rgb(228, 13, 13)'
-                        ],
-                        data: [this.cases, this.recoveries, this.deaths]
+            // The data for our dataset
+            data: {
+                labels: ['cases', 'recoveries', 'deaths'],
+                datasets: [{
+                    label: this.country,
+                    backgroundColor: [
+                        '#0e75b9',
+                        'rgb(13, 165, 59)',
+                        'rgb(228, 13, 13)'
+                    ],
+                    data: [this.cases, this.recoveries, this.deaths]
+                }]
+            },
+
+            // Configuration options go here
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
                     }]
                 },
-
-                // Configuration options go here
-                options: {
-                    maintainAspectRatio: false,
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    },
-                    title: {
-                        display: true,
-                        text: this.country,
-                        fontSize: 25
-                    }
+                title: {
+                    display: true,
+                    text: this.country,
+                    fontSize: 25
                 }
-            });
+            }
+        });
         try {
             myChart.update();
 
@@ -139,7 +142,7 @@ class Covid {
     }
     async getMonthlyInfo() {
         try {
-         
+
             const url = await fetch(`https://api.covid19api.com/country/${this.country}/status/confirmed?from=2020-02-01T00:00:00Z&to=2020-12-01T00:00:00Z`);
             let data = await url.json();
             //FILTER AND ADD DATA TO GET MONTHS NOT DAYS
@@ -193,7 +196,6 @@ class Covid {
                         values.push(cur.Cases);
                     }
                 }
-
             })
             this.monthlyData = monthsArr;
             total = 0;
@@ -215,7 +217,7 @@ class Covid {
                 labels: ['March', 'April', 'May', 'June', 'July', 'September', 'October', 'November', 'December'],
                 datasets: [{
                     label: `${this.country} cases`,
-                    data: [this.monthlyData[0], this.monthlyData[1], this.monthlyData[2], this.monthlyData[3], this.monthlyData[4],this.monthlyData[5],this.monthlyData[6],this.monthlyData[7],this.monthlyData[8]]
+                    data: [this.monthlyData[0], this.monthlyData[1], this.monthlyData[2], this.monthlyData[3], this.monthlyData[4], this.monthlyData[5], this.monthlyData[6], this.monthlyData[7], this.monthlyData[8]]
                 }]
             },
 
